@@ -40,15 +40,6 @@ a:hover {
   text-decoration: underline;
 }
 
-.nav__container {
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 24px;
-  margin: 0 auto;
-}
 
 .aqua {
   color: green;
@@ -64,6 +55,15 @@ ul {
 
 li {
   list-style-type: none;
+}
+.nav__container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  margin: 0 auto;
 }
 
 .nav__link {
@@ -81,6 +81,7 @@ li {
 
 .nav__link--primary {
   border: 2px solid rgb(127, 189, 255);
+  border-radius: 4px;
 }
 
 .nav__link--primary:hover {
@@ -88,11 +89,11 @@ li {
 }
 
 .btn__menu {
-  background-color: #7342d6;
-  color: #fff;
+  background-color: transparent;
   font-size: 40px;
-  text-align: center;
   border: none;
+  color: #7342d6;
+  text-align: center;
   display: none;
 }
 
@@ -101,13 +102,25 @@ li {
   background-color: #242424;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
   z-index: 100;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
-  display: none;
+  transition: all 300ms ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu--open .menu__backdrop {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu--open {
+  max-height: 100vh;
+  overflow-y: hidden;
 }
 
 .menu__links {
@@ -217,8 +230,8 @@ button:active {
   max-width: 100vw;
 }
 
-#highlights::after,
-#highlights::before {
+#highlights:after,
+#highlights:before {
   background: url("./assets/wave.svg");
   content: "";
   position: absolute;
@@ -235,7 +248,7 @@ button:active {
   top: 1px;
 }
 
-#highlights::after {
+#highlights:after {
   transform: translateY(100%) rotate(180deg);
   bottom: 1px;
 }
@@ -335,7 +348,7 @@ button:active {
 /* EXPLORE */
 
 #explore {
-  background-color: rgb(62, 189, 248);
+  background-color: rgb(127, 189, 255);
 }
 
 /* FOOTER */
@@ -364,4 +377,50 @@ footer {
 
 .footer__link {
   padding: 0 8px;
+}
+
+/* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
+@media (max-width: 768px) {
+  .header__description {
+    padding: 0 24px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+h2 {
+  font-size: 26px;
+}
+
+button {
+  font-size: 18px;
+}
+
+.book {
+  width: 50%;
+}
+
+}
+  
+  /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
+
+@media (max-width: 550px) {
+  
+  .btn__menu {
+    display: block;
+  }
+  
+  .nav__links {
+    display: none;
+  }
+
+  .highlight {
+    width: 100%;
+  }
+  
+  .highlight:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
 }
